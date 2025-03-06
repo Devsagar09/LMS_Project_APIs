@@ -305,7 +305,6 @@ public partial class LearningManagementSystemContext : DbContext
             entity.Property(e => e.RequiresApproval)
                 .HasDefaultValue(false)
                 .HasColumnName("requires_approval");
-            entity.Property(e => e.StudentId).HasColumnName("student_id");
             entity.Property(e => e.Summary)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -331,10 +330,6 @@ public partial class LearningManagementSystemContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("update_date");
-
-            entity.HasOne(d => d.Student).WithMany(p => p.TblTrainings)
-                .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_tbl_Training_tbl_Student");
 
             entity.HasOne(d => d.Trainingtype).WithMany(p => p.TblTrainings)
                 .HasForeignKey(d => d.TrainingtypeId)
