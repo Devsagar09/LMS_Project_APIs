@@ -12,4 +12,6 @@ public partial class TblEnrollment
     public int? TrainingId { get; set; }
 
     public DateTime? EnrollDate { get; set; }
+
+    public virtual TblStudent? Student { get; set; }
 }

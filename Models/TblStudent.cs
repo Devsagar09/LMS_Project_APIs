@@ -53,4 +53,5 @@ public partial class TblStudent
     public virtual ICollection<TblTrainingTranscript> TblTrainingTranscripts { get; set; } = new List<TblTrainingTranscript>();
 
     public virtual ICollection<TblTraining> TblTrainings { get; set; } = new List<TblTraining>();
+    public ICollection<TblEnrollment> TblEnrollments { get; set; } = new List<TblEnrollment>();
 }
