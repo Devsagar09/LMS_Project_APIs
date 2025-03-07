@@ -23,6 +23,7 @@ public partial class TblStudent
 
     public int? RoleId { get; set; }
 
+    public string? Role_name { get; set; }
     public string? ProfileImage { get; set; }
 
     public DateOnly? ArchiveDate { get; set; }
@@ -50,4 +51,9 @@ public partial class TblStudent
     public virtual ICollection<TblAssign> TblAssigns { get; set; } = new List<TblAssign>();
 
     public virtual ICollection<TblTrainingTranscript> TblTrainingTranscripts { get; set; } = new List<TblTrainingTranscript>();
+
+
+    public virtual ICollection<TblTraining> TblTrainings { get; set; } = new List<TblTraining>();
+    public ICollection<TblEnrollment> TblEnrollments { get; set; } = new List<TblEnrollment>();
+
 }

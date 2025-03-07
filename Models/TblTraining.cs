@@ -12,6 +12,7 @@ public partial class TblTraining
     public string TrainingCode { get; set; } = null!;
 
     public int? TrainingtypeId { get; set; }
+    public string? TrainingtypeName { get; set; }
 
     public string? trainingtype_name { get; set; }
 
@@ -38,6 +39,10 @@ public partial class TblTraining
     //public DateTime? CreateDate { get; set; }
 
     //public DateTime? UpdateDate { get; set; }
+
+    public DateTime? CreateDate { get; set; }
+
+    public DateTime? UpdateDate { get; set; }
 
     public virtual ICollection<TblApproval> TblApprovals { get; set; } = new List<TblApproval>();
 
