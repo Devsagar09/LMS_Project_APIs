@@ -244,11 +244,7 @@ public partial class LearningManagementSystemContext : DbContext
             entity.Property(e => e.Country)
                 .HasMaxLength(100)
                 .IsUnicode(false)
-                .HasColumnName("country");
-            entity.Property(e => e.CreateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("create_date");
+                .HasColumnName("country"); 
             entity.Property(e => e.Email)
                 .HasMaxLength(150)
                 .IsUnicode(false)
@@ -289,11 +285,7 @@ public partial class LearningManagementSystemContext : DbContext
             entity.Property(e => e.StudentNo)
                 .HasMaxLength(100)
                 .IsUnicode(false)
-                .HasColumnName("student_no");
-            entity.Property(e => e.UpdateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("update_date");
+                .HasColumnName("student_no"); 
             entity.Property(e => e.Username)
                 .HasMaxLength(100)
                 .IsUnicode(false)
