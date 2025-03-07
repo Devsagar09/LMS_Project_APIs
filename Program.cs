@@ -39,7 +39,7 @@ app.UseHttpsRedirection();
 //use CORS
 app.UseCors("AllowAll");
 
-app.UseAuthorization();
+app.UseRouting();
 
 app.UseAuthentication();
 

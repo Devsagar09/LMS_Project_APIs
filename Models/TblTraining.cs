@@ -12,6 +12,7 @@ public partial class TblTraining
     public string TrainingCode { get; set; } = null!;
 
     public int? TrainingtypeId { get; set; }
+    public string? TrainingtypeName { get; set; }
 
     public string? DocumentFile { get; set; }
 
@@ -36,11 +37,6 @@ public partial class TblTraining
     public DateTime? CreateDate { get; set; }
 
     public DateTime? UpdateDate { get; set; }
-
-    public int? StudentId { get; set; }
-
-    public virtual TblStudent? Student { get; set; }
-
     public virtual ICollection<TblApproval> TblApprovals { get; set; } = new List<TblApproval>();
 
     public virtual ICollection<TblAssign> TblAssigns { get; set; } = new List<TblAssign>();

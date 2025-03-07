@@ -23,6 +23,7 @@ public partial class TblStudent
 
     public int? RoleId { get; set; }
 
+    public string? Role_name { get; set; }
     public string? ProfileImage { get; set; }
 
     public DateOnly? ArchiveDate { get; set; }
