@@ -20,7 +20,7 @@ namespace LMS_Project_APIs.Controllers
         [HttpGet("getTraining")]
         public IActionResult getTraining()
         {
-            var trainings =  _context.TblTrainings
+            var trainings =  _context.TrainingSearches
                             .FromSqlRaw("EXEC display_Training")
                             .AsEnumerable()
                             .ToList();
@@ -76,6 +76,24 @@ namespace LMS_Project_APIs.Controllers
             {
                 return StatusCode(500, new { Message = "an error : ", Error = ex.Message });
             }
+        }
+
+        [HttpGet("searchTraining")]
+        public async Task<ActionResult> searchTraining(string searchValue)
+        {
+            if(string.IsNullOrWhiteSpace(searchValue))
+            {
+                return BadRequest("search value can not be empty!");
+            }
+
+            var results =  await _context.TrainingSearches
+                                        .FromSqlRaw("EXEC search_Training @p0", searchValue)
+                                        .ToListAsync();
+            if (results == null || results.Count == 0)
+            {
+                return NotFound("No matching training records found.");
+            }
+            return Ok(results);
         }
     }
 }

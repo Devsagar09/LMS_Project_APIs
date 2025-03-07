@@ -37,6 +37,8 @@ public partial class LearningManagementSystemContext : DbContext
 
     public virtual DbSet<TblTrainingType> TblTrainingTypes { get; set; }
 
+    public virtual DbSet<TrainingSearch> TrainingSearches { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=192.168.150.242;Initial Catalog=Learning_Management_System;User ID=admin;Password=admin;Encrypt=True;Trust Server Certificate=True");
@@ -292,10 +294,10 @@ public partial class LearningManagementSystemContext : DbContext
             entity.Property(e => e.CourseCatalog)
                 .HasDefaultValue(true)
                 .HasColumnName("course_catalog");
-            entity.Property(e => e.CreateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("create_date");
+            //entity.Property(e => e.CreateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("create_date");
             entity.Property(e => e.CstartDate).HasColumnName("cstart_date");
             entity.Property(e => e.DocumentFile).HasColumnName("document_file");
             entity.Property(e => e.ExternalLinkUrl)
@@ -326,10 +328,10 @@ public partial class LearningManagementSystemContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("training_name");
             entity.Property(e => e.TrainingtypeId).HasColumnName("trainingtype_id");
-            entity.Property(e => e.UpdateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("update_date");
+            //entity.Property(e => e.UpdateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("update_date");
 
             entity.HasOne(d => d.Trainingtype).WithMany(p => p.TblTrainings)
                 .HasForeignKey(d => d.TrainingtypeId)
@@ -371,15 +373,15 @@ public partial class LearningManagementSystemContext : DbContext
 
         modelBuilder.Entity<TblTrainingType>(entity =>
         {
-            entity.HasKey(e => e.TrainingtypeId).HasName("PK__tbl_Trai__7EEAAD047E5B6571");
+            entity.HasKey(e => e.Trainingtype_Id).HasName("PK__tbl_Trai__7EEAAD047E5B6571");
 
             entity.ToTable("tbl_TrainingType");
 
-            entity.Property(e => e.TrainingtypeId).HasColumnName("trainingtype_id");
-            entity.Property(e => e.CreateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("create_date");
+            entity.Property(e => e.Trainingtype_Id).HasColumnName("trainingtype_id");
+            //entity.Property(e => e.CreateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("create_date");
             entity.Property(e => e.Description)
                 .IsUnicode(false)
                 .HasColumnName("description");
@@ -387,11 +389,13 @@ public partial class LearningManagementSystemContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("trainingtype_name");
-            entity.Property(e => e.UpdateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("update_date");
+            //entity.Property(e => e.UpdateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("update_date");
         });
+
+        modelBuilder.Entity<TrainingSearch>().HasNoKey().ToView(null);
 
         OnModelCreatingPartial(modelBuilder);
     }

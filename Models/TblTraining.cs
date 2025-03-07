@@ -35,9 +35,9 @@ public partial class TblTraining
 
     public string? ThumbnailImage { get; set; }
 
-    public DateTime? CreateDate { get; set; }
+    //public DateTime? CreateDate { get; set; }
 
-    public DateTime? UpdateDate { get; set; }
+    //public DateTime? UpdateDate { get; set; }
 
     public virtual ICollection<TblApproval> TblApprovals { get; set; } = new List<TblApproval>();
 
