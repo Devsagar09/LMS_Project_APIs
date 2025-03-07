@@ -40,10 +40,6 @@ public partial class TblStudent
 
     public string? Country { get; set; }
 
-    public DateTime? CreateDate { get; set; }
-
-    public DateTime? UpdateDate { get; set; }
-
     public virtual TblRole? Role { get; set; }
 
     public virtual ICollection<TblApproval> TblApprovals { get; set; } = new List<TblApproval>();
