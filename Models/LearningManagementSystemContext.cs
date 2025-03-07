@@ -37,6 +37,8 @@ public partial class LearningManagementSystemContext : DbContext
 
     public virtual DbSet<TblTrainingType> TblTrainingTypes { get; set; }
 
+    public virtual DbSet<TrainingSearch> TrainingSearches { get; set; }
+
    public virtual DbSet<CourseCatalog> CourseCatalogs { get; set; }
 
    public virtual DbSet<DisplayIDP> DisplayIDPs { get; set; } 
@@ -44,7 +46,6 @@ public partial class LearningManagementSystemContext : DbContext
     public virtual DbSet<IDPSearching> IDPSearchings { get; set; }
     public virtual DbSet<TranscriptSearching> TranscriptSearchings { get; set; }
     public virtual DbSet<DisplayEnrollment> DisplayEnrollments { get; set; }
-
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -316,10 +317,10 @@ public partial class LearningManagementSystemContext : DbContext
             entity.Property(e => e.CourseCatalog)
                 .HasDefaultValue(true)
                 .HasColumnName("course_catalog");
-            entity.Property(e => e.CreateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("create_date");
+            //entity.Property(e => e.CreateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("create_date");
             entity.Property(e => e.CstartDate).HasColumnName("cstart_date");
             entity.Property(e => e.DocumentFile).HasColumnName("document_file");
             entity.Property(e => e.ExternalLinkUrl)
@@ -350,10 +351,17 @@ public partial class LearningManagementSystemContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("training_name");
             entity.Property(e => e.TrainingtypeId).HasColumnName("trainingtype_id");
+
+            //entity.Property(e => e.UpdateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("update_date");
+
             entity.Property(e => e.UpdateDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("update_date");
+
 
             entity.HasOne(d => d.Trainingtype).WithMany(p => p.TblTrainings)
                 .HasForeignKey(d => d.TrainingtypeId)
@@ -395,15 +403,15 @@ public partial class LearningManagementSystemContext : DbContext
 
         modelBuilder.Entity<TblTrainingType>(entity =>
         {
-            entity.HasKey(e => e.TrainingtypeId).HasName("PK__tbl_Trai__7EEAAD047E5B6571");
+            entity.HasKey(e => e.Trainingtype_Id).HasName("PK__tbl_Trai__7EEAAD047E5B6571");
 
             entity.ToTable("tbl_TrainingType");
 
-            entity.Property(e => e.TrainingtypeId).HasColumnName("trainingtype_id");
-            entity.Property(e => e.CreateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("create_date");
+            entity.Property(e => e.Trainingtype_Id).HasColumnName("trainingtype_id");
+            //entity.Property(e => e.CreateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("create_date");
             entity.Property(e => e.Description)
                 .IsUnicode(false)
                 .HasColumnName("description");
@@ -411,11 +419,13 @@ public partial class LearningManagementSystemContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("trainingtype_name");
-            entity.Property(e => e.UpdateDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("update_date");
+            //entity.Property(e => e.UpdateDate)
+            //    .HasDefaultValueSql("(getdate())")
+            //    .HasColumnType("datetime")
+            //    .HasColumnName("update_date");
         });
+
+        modelBuilder.Entity<TrainingSearch>().HasNoKey().ToView(null);
 
         OnModelCreatingPartial(modelBuilder);
     }

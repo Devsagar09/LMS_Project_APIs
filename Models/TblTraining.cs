@@ -14,6 +14,8 @@ public partial class TblTraining
     public int? TrainingtypeId { get; set; }
     public string? TrainingtypeName { get; set; }
 
+    public string? trainingtype_name { get; set; }
+
     public string? DocumentFile { get; set; }
 
     public string? ExternalLinkUrl { get; set; }
@@ -34,9 +36,14 @@ public partial class TblTraining
 
     public string? ThumbnailImage { get; set; }
 
+    //public DateTime? CreateDate { get; set; }
+
+    //public DateTime? UpdateDate { get; set; }
+
     public DateTime? CreateDate { get; set; }
 
     public DateTime? UpdateDate { get; set; }
+
     public virtual ICollection<TblApproval> TblApprovals { get; set; } = new List<TblApproval>();
 
     public virtual ICollection<TblAssign> TblAssigns { get; set; } = new List<TblAssign>();
